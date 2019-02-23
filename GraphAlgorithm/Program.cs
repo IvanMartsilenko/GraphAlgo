@@ -138,8 +138,50 @@ namespace GraphAlgorithm
         public double Weight { get; set; }
         public int Index { get; set; }
         public List<Node> Ends { get; private set; }
-        
 
+        public Node this[int Index]
+        {
+            get
+            {
+                if (Index >= 0 && Index <= 1)
+                {
+                    return Ends[Index];
+                }
+
+                return null;
+            }
+        }
+        public Edge()
+        {
+            Ends = new List<Node>();
+
+            Name = string.Empty;
+
+            Weight = 0.0;
+
+            Index = 0;
+        }
+        public object Clone()
+        {
+            List<Node> EndsOfEdge = new List<Node>()
+            {
+                (Node)this.Ends[0].Clone(),
+
+                (Node)this.Ends[1].Clone()
+            };
+
+            Edge Edge = new Edge
+            {
+                Weight = this.Weight,
+
+                Name = this.Name,
+
+                Index = this.Index,
+
+                Ends = EndsOfEdge
+            };
+            return Edge;
+        }
     }
 
 }
