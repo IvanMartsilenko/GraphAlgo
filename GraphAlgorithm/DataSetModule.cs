@@ -38,6 +38,18 @@ namespace GraphAlgorithm
         //     SetOfEdges.Add(new Edge(Edge.Weight, Edge[1], Edge[0]));
         //     SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
         // }
+        public Edge FindEdge(params Node[] Nodes)
+        {
+            for (int Index = 0; Index < QuantityOfEdges; Index++)
+            {
+                if (SetOfEdges[Index][0].Equals(Nodes[0]) && SetOfEdges[Index][1].Equals(Nodes[1]))
+                {
+                    return SetOfEdges[Index];
+                }
+            }
+
+            return new Edge { Weight = double.PositiveInfinity };
+        }
         public object Clone()
         {
             List<Node> SetOfNodes = new List<Node>();
