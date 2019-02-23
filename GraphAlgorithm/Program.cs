@@ -23,12 +23,50 @@ namespace GraphAlgorithm
     {
         public List<Node> SetOfNodes { get; set; }
         public List<Edge> SetOfEdges { get; set; }
+        public Graph()
+        {
+            SetOfNodes = new List<Node>();
+            SetOfEdges = new List<Edge>();
+        }
         public int QuantityOfNodes { get { return SetOfNodes.Count; } }
         public int QuantityOfEdges { get { return SetOfEdges.Count; } }
 
-
-
-
+        public void AddNode(Node Node)
+        {
+            SetOfNodes.Add(Node);
+            SetOfNodes[SetOfNodes.Count - 1].Index = SetOfNodes.Count - 1;
+        }
+        public void AddOneWayEdge(Edge Edge)
+        {
+            SetOfEdges.Add(Edge);
+            SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
+        }
+       // public void AddTwoWayEdge(Edge Edge)
+       // {
+       //     SetOfEdges.Add(Edge);
+       //     SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
+       //     SetOfEdges.Add(new Edge(Edge.Weight, Edge[1], Edge[0]));
+       //     SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
+       // }
+       public object Clone()
+        {
+            List<Node> SetOfNodes = new List<Node>();
+            List<Edge> SetOfEdges = new List<Edge>();
+            Graph Graph = new Graph
+            {
+                SetOfNodes = SetOfNodes,
+                SetOfEdges = SetOfEdges
+            };
+            for (int Index = 0; Index < QuantityOfNodes; Index++)
+            {
+                SetOfNodes.Add((Node)this.SetOfNodes[Index].Clone());
+            }
+            for (int Index = 0; Index < QuantityOfEdges; Index++)
+            {
+                SetOfEdges.Add((Edge)this.SetOfEdges[Index].Clone());
+            }
+            return Graph;
+        }
     }
 
     /// <summary>
@@ -58,7 +96,7 @@ namespace GraphAlgorithm
     {
         public Coordinate Coordinate { get; private set; }
         public string Name { get; set; }
-
+        public double Weight { get; set; }
         public Node[] Incomers { get; set; }
 
         // need for A*, TotalPathCost = PastWayCost + HeuristicCost;
@@ -83,6 +121,7 @@ namespace GraphAlgorithm
                 Incomers = this.Incomers,
                 Name = this.Name,
                 Index = this.Index,
+                Weight = this.Weight,
             };
             return Node;
         }
@@ -96,8 +135,12 @@ namespace GraphAlgorithm
             Coordinate = null;
             Incomers = null;
             Index = 0;
+            Weight = 0.0;
         }
-
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public Node this[int Index]
         {
             get
