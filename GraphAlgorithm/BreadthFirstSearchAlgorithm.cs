@@ -12,6 +12,19 @@ namespace GraphAlgorithm
 {
     public class BreadthFirstSearchAlgorithm
     {
+        public List<Edge> ResultOfSearching { get; }
+        private static Graph InnerGraph { get; set; }
+        private List<Node> VisitedNodes { get; }
+        private Queue<Node> Queue { get; }
+
+        public BreadthFirstSearchAlgorithm(Graph Graph)
+        {
+            Queue = new Queue<Node>();
+            InnerGraph = (Graph)Graph.Clone();
+            ResultOfSearching = new List<Edge>();
+            VisitedNodes = new List<Node>();
+        }
+
 
     }
 }
