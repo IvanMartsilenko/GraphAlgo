@@ -25,6 +25,36 @@ namespace GraphAlgorithm
             VisitedNodes = new List<Node>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Start"></param> - first Node
+        /// <returns></returns>
+        public bool BreadthFirstSearch(Node Start)
+        {
+            Queue.Enqueue(Start);
+
+            VisitedNodes.Add(Start);
+
+            for (; Queue.Count > 0;)
+            {
+                Start = Queue.Dequeue();
+
+                for (int Index = 0; Index < InnerGraph.QuantityOfNodes; Index++)
+                {
+                    if (InnerGraph.SetOfNodes[Start.Index][Index] != null && !VisitedNodes.Contains(InnerGraph.SetOfNodes[Index]))
+                    {
+                        ResultOfSearching.Add(InnerGraph.FindEdge(Start, InnerGraph.SetOfNodes[Index]));
+
+                        Queue.Enqueue(InnerGraph.SetOfNodes[Index]);
+
+                        VisitedNodes.Add(InnerGraph.SetOfNodes[Index]);
+                    }
+                }
+            }
+
+            return VisitedNodes.Count.Equals(InnerGraph.QuantityOfNodes);
+        }
 
     }
 }
