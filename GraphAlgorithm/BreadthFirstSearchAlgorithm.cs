@@ -25,8 +25,8 @@ namespace GraphAlgorithm
             VisitedNodes = new List<Node>();
         }
 
-        /// <summary>
-        /// 
+        /// bool  BreadthFirstSearch(Node Start) starting from StartNode
+        /// adding that Node in queue, afterthat starting cycle for all Graph
         /// </summary>
         /// <param name="Start"></param> - first Node
         /// <returns></returns>
@@ -39,12 +39,49 @@ namespace GraphAlgorithm
             for (; Queue.Count > 0;)
             {
                 Start = Queue.Dequeue();
-
                 for (int Index = 0; Index < InnerGraph.QuantityOfNodes; Index++)
                 {
                     if (InnerGraph.SetOfNodes[Start.Index][Index] != null && !VisitedNodes.Contains(InnerGraph.SetOfNodes[Index]))
                     {
                         ResultOfSearching.Add(InnerGraph.FindEdge(Start, InnerGraph.SetOfNodes[Index]));
+                        Queue.Enqueue(InnerGraph.SetOfNodes[Index]);
+                        VisitedNodes.Add(InnerGraph.SetOfNodes[Index]);
+                    }
+                }
+            }
+            return VisitedNodes.Count.Equals(InnerGraph.QuantityOfNodes);
+        }
+
+        /// 
+        /// bfs var 2  
+        /// searching path to target node from some start node
+        /// 
+        /// <param name="Start"> - first node
+        /// <param name="Target"> - our scope
+        /// <param name="Path"> - for our scope
+        /// <returns></returns>
+        public bool BreadthFirstSearch(Node Start, Node Target, Node[] Path)
+        {
+            Queue.Enqueue(Start);
+
+            VisitedNodes.Add(Start);
+
+            Path[Start.Index] = Start;
+
+            if (VisitedNodes.Contains(Target))
+            {
+                return true;
+            }
+
+            for (; Queue.Count > 0;)
+            {
+                Start = Queue.Dequeue();
+
+                for (int Index = 0; Index < InnerGraph.QuantityOfNodes; Index++)
+                {
+                    if (InnerGraph.SetOfNodes[Start.Index][Index] != null && !VisitedNodes.Contains(InnerGraph.SetOfNodes[Index]) && InnerGraph.FindEdge(Start, InnerGraph.SetOfNodes[Index]).Weight > 0)
+                    {
+                        Path[Index] = Start;
 
                         Queue.Enqueue(InnerGraph.SetOfNodes[Index]);
 
@@ -53,8 +90,9 @@ namespace GraphAlgorithm
                 }
             }
 
-            return VisitedNodes.Count.Equals(InnerGraph.QuantityOfNodes);
+            return VisitedNodes.Contains(Target);
         }
+
 
     }
 }
