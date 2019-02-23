@@ -48,22 +48,43 @@ namespace GraphAlgorithm
     /// <summary>
     /// class Node connected to class Coodinate and class Edge
     /// </summary>
-    public class Node
+    public class Node : ICloneable
     {
         public Coordinate Coordinate { get; private set; }
         public string Name { get; set; }
 
         public Node[] Incomers { get; set; }
 
+        // need for A*, TotalPathCost = PastWayCost + HeuristicCost;
         public double HeuristicCost { get; set; }
         public double PastWayCost { get; set; }
         public double TotalPathCost { get; set; }
+
+        public int Index { get; set; }
+
 
         public override bool Equals(object Object)
         {
             Node Node = (Node)Object;
 
             return this.Name.Equals(Node.Name);
+        }
+
+        // need for realization of ICloneable interface
+        public object Clone()
+        {
+            Node Node = new Node
+            {
+                Coordinate = this.Coordinate,
+
+                Incomers = this.Incomers,
+
+                Name = this.Name,
+
+                Index = this.Index,
+            };
+
+            return Node;
         }
     }
 
