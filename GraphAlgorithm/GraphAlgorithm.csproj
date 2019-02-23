@@ -47,6 +47,7 @@
     <Compile Include="DataSetModule.cs" />
     <Compile Include="DepthFirstSearchAlgorithm.cs" />
     <Compile Include="KruscalAlgorithm.cs" />
+    <Compile Include="PrimaAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
