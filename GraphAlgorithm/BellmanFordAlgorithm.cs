@@ -16,7 +16,7 @@ namespace GraphAlgorithm
             ShortestPath = InnerGraph.SetOfNodes;
             SetInfinityWeightsForNode ( ShortestPath);
         }
-        public bool FindTheShortestPath(Node Start)
+        public bool BellmanFordShortestPathSearchAlgorithm(Node Start)
         {
             ShortestPath[Start.Index].Weight = 0;
 
