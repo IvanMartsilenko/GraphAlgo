@@ -55,6 +55,16 @@ namespace GraphAlgorithm
 
         public Node[] Incomers { get; set; }
 
+        public double HeuristicCost { get; set; }
+        public double PastWayCost { get; set; }
+        public double TotalPathCost { get; set; }
+
+        public override bool Equals(object Object)
+        {
+            Node Node = (Node)Object;
+
+            return this.Name.Equals(Node.Name);
+        }
     }
 
 
