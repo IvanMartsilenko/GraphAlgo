@@ -62,11 +62,9 @@ namespace GraphAlgorithm
 
         public int Index { get; set; }
 
-
         public override bool Equals(object Object)
         {
             Node Node = (Node)Object;
-
             return this.Name.Equals(Node.Name);
         }
 
@@ -76,15 +74,60 @@ namespace GraphAlgorithm
             Node Node = new Node
             {
                 Coordinate = this.Coordinate,
-
                 Incomers = this.Incomers,
-
                 Name = this.Name,
-
                 Index = this.Index,
             };
-
             return Node;
+        }
+
+        public Node()
+        {
+            HeuristicCost = 0.0;
+            PastWayCost = 0.0;
+            TotalPathCost = 0.0;
+            Name = string.Empty;
+            Coordinate = null;
+            Incomers = null;
+            Index = 0;
+        }
+
+        public Node this[int Index]
+        {
+            get
+            {
+                if (Index >= 0 && Index < Incomers.Length)
+                {
+                    return Incomers[Index];
+                }
+                return null;
+            }
+            set
+            {
+                if (Index >= 0 && Index < Incomers.Length)
+                {
+                    Incomers[Index] = value;
+                }
+            }
+        }
+
+        public Node(int NumberOfIncomers, string Name, Coordinate Coordinate)
+        {
+            Incomers = new Node[NumberOfIncomers + 1];
+
+            this.Coordinate = Coordinate;
+
+            this.Name = $"[{Name}]";
+
+            Index = 0;
+        }
+        public Node(int NumberOfIncomers, string Name)
+        {
+            Incomers = new Node[NumberOfIncomers + 1];
+
+            this.Name = $"[{Name}]";
+
+            Index = 0;
         }
     }
 
