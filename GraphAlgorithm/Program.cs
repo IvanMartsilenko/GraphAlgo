@@ -131,5 +131,15 @@ namespace GraphAlgorithm
         }
     }
 
+    public class Edge : ICloneable
+    {
+
+        public string Name { get; private set; }
+        public double Weight { get; set; }
+        public int Index { get; set; }
+        public List<Node> Ends { get; private set; }
+        
+
+    }
 
 }
