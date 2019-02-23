@@ -13,14 +13,13 @@ namespace GraphAlgorithm
         private List<Node> VisitedNodes { get; }
         public DepthFirstSearchAlgorithm(Graph Graph)
         {
-
             InnerGraph = (Graph)Graph.Clone();
             ResultOfSearching = new List<Edge>();
             VisitedNodes = new List<Node>();
         }
 
-        ///  that type of DFS that start from one Node ( that give as param) and researche all graph
-        /// 
+        /// <summary>
+        ///  that type of DFS that start from one Node ( that give as param) and researche all graph </summary>
         /// <param name="Start">< Node that our research start>
         /// <returns> true if we find all Nodes</returns>
         public bool DepthFirstSearch(Node Start)
@@ -39,7 +38,7 @@ namespace GraphAlgorithm
         }
 
         /// <summary>
-        /// that type of DFS that start from one Node ( that give as param) and researche targeted node
+        /// that type of DFS that start from one Node ( that give as param) and researche targeted node. </summary>
         /// <param name="Start"> first Node in queue</param>
         /// <param name="Target"> Scope of our researche</param>
         /// <param name="FoundPath"></param>
