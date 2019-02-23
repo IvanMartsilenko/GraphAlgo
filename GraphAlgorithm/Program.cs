@@ -67,6 +67,26 @@ namespace GraphAlgorithm
             }
             return Graph;
         }
+    } 
+
+    /// <summary>
+    /// public class Coordinate create field with Decard coordinate system
+    /// </summary>
+    public class Coordinate
+    {
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
+        public Coordinate(int X, int Y)
+        {
+            this.X = X;
+            this.Y = Y;
+        }
+        public Coordinate()
+        {
+            X = 0;
+            Y = 0;
+        }
     }
 
     /// <summary>
@@ -160,6 +180,7 @@ namespace GraphAlgorithm
         }
     }
 
+    
     public class Edge : ICloneable
     {
 
