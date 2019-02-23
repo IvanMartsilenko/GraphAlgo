@@ -69,6 +69,18 @@ namespace GraphAlgorithm
             }
             return Graph;
         }
+
+        public bool NegativeCycleChecker(List<Node> Nodes)
+        {
+            for (int Index = 0; Index < QuantityOfEdges; Index++)
+            {
+                if (Nodes[SetOfEdges[Index][1].Index].Weight > Nodes[SetOfEdges[Index][0].Index].Weight + SetOfEdges[Index].Weight)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     /// <summary>
