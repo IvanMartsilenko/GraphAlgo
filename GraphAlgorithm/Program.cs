@@ -19,8 +19,14 @@ namespace GraphAlgorithm
         }
     }
 
-    public class Graph
+    public class Graph : ICloneable
     {
+        public List<Node> SetOfNodes { get; set; }
+        public List<Edge> SetOfEdges { get; set; }
+        public int QuantityOfNodes { get { return SetOfNodes.Count; } }
+        public int QuantityOfEdges { get { return SetOfEdges.Count; } }
+
+
 
 
     }
