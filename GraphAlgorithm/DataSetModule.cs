@@ -88,6 +88,11 @@ namespace GraphAlgorithm
 
         public int Index { get; set; }
 
+        protected void SetInfinityWeightsForNode(List<Node> Nodes)
+        {
+            Nodes[Index].Weight = double.PositiveInfinity;
+        }
+
         public override bool Equals(object Object)
         {
             Node Node = (Node)Object;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphAlgorithm
 {
-    class BellmanFordAlgorithm
+    class BellmanFordAlgorithm : Node
     {
         public List<Node> ShortestPath { get; private set; }
         private static Graph InnerGraph { get; set; }
@@ -14,6 +14,8 @@ namespace GraphAlgorithm
         {
             InnerGraph = (Graph)Graph.Clone();
             ShortestPath = InnerGraph.SetOfNodes;
+            SetInfinityWeightsForNode(ShortestPath);
         }
+        
     }
 }
