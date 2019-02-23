@@ -30,18 +30,32 @@ namespace GraphAlgorithm
     /// </summary>
     public class Coordinate
     {
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
         public Coordinate(int X, int Y)
         {
             this.X = X;
             this.Y = Y;
         }
-        public int X { get; private set; }
-        public int Y { get; private set; }
         public Coordinate()
         {
             X = 0;
             Y = 0;
         }
     }
+
+    /// <summary>
+    /// class Node connected to class Coodinate and class Edge
+    /// </summary>
+    public class Node
+    {
+        public Coordinate Coordinate { get; private set; }
+        public string Name { get; set; }
+
+        public Node[] Incomers { get; set; }
+
+    }
+
 
 }
