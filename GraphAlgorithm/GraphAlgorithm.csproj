@@ -48,6 +48,7 @@
     <Compile Include="DataSetModule.cs" />
     <Compile Include="DepthFirstSearchAlgorithm.cs" />
     <Compile Include="DijkstraAlgorithm.cs" />
+    <Compile Include="Floyd-WarshallAlgorithm.cs" />
     <Compile Include="KruscalAlgorithm.cs" />
     <Compile Include="PrimaAlgorithm.cs" />
     <Compile Include="Program.cs" />
