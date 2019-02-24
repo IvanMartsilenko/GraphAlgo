@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GraphAlgorithm
 {
-    class BellmanFordAlgorithm : Node
+    public class BellmanFordAlgorithm : Node
     {
         public List<Node> ShortestPath { get; private set; }
         private static Graph InnerGraph { get; set; }

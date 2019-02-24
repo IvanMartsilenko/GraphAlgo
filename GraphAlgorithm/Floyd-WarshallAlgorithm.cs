@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GraphAlgorithm
 {
-    class Floyd_WarshallAlgorithm
+    public class Floyd_WarshallAlgorithm
     {
         private static Graph InnerGraph { get; set; }
         public double[,] MatrixOfTheShortesPathes { get; private set; }
