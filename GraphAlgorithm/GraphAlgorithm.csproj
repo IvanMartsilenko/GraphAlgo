@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="A_Star.cs" />
     <Compile Include="BellmanFordAlgorithm.cs" />
     <Compile Include="BreadthFirstSearchAlgorithm.cs" />
     <Compile Include="Coordinate.cs" />
