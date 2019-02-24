@@ -9,6 +9,7 @@ namespace GraphAlgorithm
     class JohnsonAlgorithm
     {
         private static DijkstraAlgorithm DijkstraPathSearch { get; set; }
+        private static BellmanFordAlgorithm BellmanFordPathSearch { get; set; }
         private static Graph InnerGraph { get; set; }
         public double[,] MatrixOfTheShortesPathes { get; private set; }
 
