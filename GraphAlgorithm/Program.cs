@@ -28,10 +28,16 @@ namespace GraphAlgorithm
 
         static void Main(string[] args)
         {
-            Load.LoadNodes(Graph);
-            Load.LoadOneWayEdges(Graph);
-            Load.LoadTwoWayEdges(Graph);
+            // data loading module 
+            {
+                Load.LoadNodes(Graph);
+                Load.LoadOneWayEdges(Graph);
+                Load.LoadTwoWayEdges(Graph);
+            }
+
             Console.WriteLine("Loading finished");
+            // algo module
+
             Console.ReadKey();
         }
     }
