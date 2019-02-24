@@ -36,5 +36,33 @@ namespace GraphAlgorithm
                 }
             }
         }
+        public void Floyd_WarshalSATSPAlgorithm()
+        {
+            for (int Index = 0; Index < InnerGraph.QuantityOfNodes; Index++)
+            {
+                MatrixOfTheShortesPathes[Index, Index] = 0;
+            }
+
+            for (int FirstIndex = 0; FirstIndex < InnerGraph.QuantityOfNodes; FirstIndex++)
+            {
+                for (int SecondIndex = 0; SecondIndex < InnerGraph.QuantityOfNodes; SecondIndex++)
+                {
+                    for (int ThirdIndex = 0; ThirdIndex < InnerGraph.QuantityOfNodes; ThirdIndex++)
+                    {
+                        if (MatrixOfTheShortesPathes[SecondIndex, ThirdIndex] >
+                            MatrixOfTheShortesPathes[SecondIndex, FirstIndex] + MatrixOfTheShortesPathes[FirstIndex, ThirdIndex])
+                        {
+                            MatrixOfTheShortesPathes[SecondIndex, ThirdIndex] = MatrixOfTheShortesPathes[SecondIndex, ThirdIndex];
+                        }
+                        else
+                        {
+                            MatrixOfTheShortesPathes[SecondIndex, ThirdIndex] =
+                                MatrixOfTheShortesPathes[SecondIndex, FirstIndex] + MatrixOfTheShortesPathes[FirstIndex, ThirdIndex];
+                        }
+                    }
+                }
+            }
+        }
     }
+
 }
