@@ -23,5 +23,32 @@ namespace GraphAlgorithm
             Path = new Node[InnerGraph.QuantityOfNodes];
             CapacityOfFlow = 0.0;
         }
+        public bool FordFulkersonBFSTypeAlgorithm(Node Start, Node Target)
+        {
+            if (Start.Equals(Target))
+            {
+                CapacityOfFlow = 0.0;
+                return true;
+            }
+            Node CurrentNode = new Node();
+            for (; BreadthFirstSearch.BreadthFirstSearch(Start, Target, Path);)
+            {
+                double CurrentStreamCapacity = double.PositiveInfinity;
+                for (int Index = Target.Index; Index != Start.Index; Index = Path[Index].Index)
+                {
+                    CurrentNode = Path[Index];
+                    if (CurrentStreamCapacity < InnerGraph.FindEdge(CurrentNode, InnerGraph.SetOfNodes[Index]).Weight)
+                        CurrentStreamCapacity = InnerGraph.FindEdge(CurrentNode, InnerGraph.SetOfNodes[Index]).Weight;
+                }
+                for (int Index = Target.Index; Index != Start.Index; Index = Path[Index].Index)
+                {
+                    InnerGraph.FindEdge(CurrentNode, InnerGraph.SetOfNodes[Index]).Weight -= CurrentStreamCapacity;
+                    InnerGraph.FindEdge(InnerGraph.SetOfNodes[Index], CurrentNode).Weight += CurrentStreamCapacity;
+                }
+                CapacityOfFlow += CurrentStreamCapacity;
+                BreadthFirstSearch = new BreadthFirstSearchAlgorithm(InnerGraph);
+            }
+            return true;
+        }
     }
 }
