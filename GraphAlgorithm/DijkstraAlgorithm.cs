@@ -10,7 +10,24 @@ using System.Threading.Tasks;
 
 namespace GraphAlgorithm
 {
-    class DijkstraAlgorithm
+    class DijkstraAlgorithm : Node
     {
+        public List<Node> ShortestPath { get; private set; }
+        private List<Node> VisitedNodes { get; }
+        private static Graph InnerGraph { get; set; }
+        private int Index { get; set; }
+
+
+        public DijkstraAlgorithm(Graph Graph)
+        {
+            InnerGraph = (Graph)Graph.Clone();
+
+            ShortestPath = InnerGraph.SetOfNodes;
+
+            VisitedNodes = new List<Node>();
+
+            SetInfinityWeightsForNode(ShortestPath);
+        }
+
     }
-}
+    }
