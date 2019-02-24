@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GraphAlgorithm
 {
-    class DepthFirstSearchAlgorithm
+    public class DepthFirstSearchAlgorithm
     {
         public List<Edge> ResultOfSearching { get; }
         private static Graph InnerGraph { get; set; }
