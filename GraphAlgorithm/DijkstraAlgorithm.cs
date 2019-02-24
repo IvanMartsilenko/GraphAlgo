@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GraphAlgorithm
 {
-    class DijkstraAlgorithm : Node
+    public class DijkstraAlgorithm : Node
     {
         public List<Node> ShortestPath { get; private set; }
         private List<Node> VisitedNodes { get; }
