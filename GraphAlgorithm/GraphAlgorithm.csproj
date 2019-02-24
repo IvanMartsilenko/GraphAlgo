@@ -46,6 +46,7 @@
     <Compile Include="BellmanFordAlgorithm.cs" />
     <Compile Include="BreadthFirstSearchAlgorithm.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="DataLoading.cs" />
     <Compile Include="DataSetModule.cs" />
     <Compile Include="DepthFirstSearchAlgorithm.cs" />
     <Compile Include="DijkstraAlgorithm.cs" />
