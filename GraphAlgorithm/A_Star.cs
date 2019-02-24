@@ -12,5 +12,19 @@ namespace GraphAlgorithm
 {
     class A_Star
     {
+        private static Graph InnerGraph { get; set; }
+        private List<Node> ActualNodes { get; set; }
+        private List<Node> ClosedNodes { get; set; }
+        private List<Node> VisitedNodes { get; }
+        public List<Edge> ShortesPath { get; }
+
+        public A_Star(Graph Graph)
+        {
+            InnerGraph = (Graph)Graph.Clone();
+            ClosedNodes = new List<Node>();
+            ActualNodes = new List<Node>();
+            VisitedNodes = new List<Node>();
+            ShortesPath = new List<Edge>();
+        }
     }
 }
