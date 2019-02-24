@@ -12,6 +12,29 @@ namespace GraphAlgorithm
 {
     class Floyd_WarshallAlgorithm
     {
+        private static Graph InnerGraph { get; set; }
+        public double[,] MatrixOfTheShortesPathes { get; private set; }
 
+        public Floyd_WarshallAlgorithm(Graph Graph)
+        {
+            InnerGraph = (Graph)Graph.Clone();
+
+            MatrixOfTheShortesPathes = new double[Graph.QuantityOfNodes, Graph.QuantityOfNodes];
+            // Initialise MatrixOfTheShortestPathes
+            for (int FirstIndex = 0; FirstIndex < InnerGraph.QuantityOfNodes; FirstIndex++)
+            {
+                for (int SecondIndex = 0; SecondIndex < InnerGraph.QuantityOfNodes; SecondIndex++)
+                {
+                    if (InnerGraph.SetOfNodes[FirstIndex][SecondIndex] != null)
+                    {
+                        MatrixOfTheShortesPathes[FirstIndex, SecondIndex] = InnerGraph.FindEdge(InnerGraph.SetOfNodes[FirstIndex], InnerGraph.SetOfNodes[SecondIndex]).Weight;
+                    }
+                    else
+                    {
+                        MatrixOfTheShortesPathes[FirstIndex, SecondIndex] = double.PositiveInfinity;
+                    }
+                }
+            }
+        }
     }
 }
