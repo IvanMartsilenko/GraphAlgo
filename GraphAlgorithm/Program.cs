@@ -11,6 +11,8 @@ namespace GraphAlgorithm
 {
     class Program
     {
+        private static Graph Graph = new Graph();
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
