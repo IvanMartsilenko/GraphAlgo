@@ -31,13 +31,13 @@ namespace GraphAlgorithm
             SetOfEdges.Add(Edge);
             SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
         }
-        // public void AddTwoWayEdge(Edge Edge)
-        // {
-        //     SetOfEdges.Add(Edge);
-        //     SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
-        //     SetOfEdges.Add(new Edge(Edge.Weight, Edge[1], Edge[0]));
-        //     SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
-        // }
+        public void AddTwoWayEdge(Edge Edge)
+        {
+            SetOfEdges.Add(Edge);
+            SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
+            SetOfEdges.Add(new Edge(Edge.Weight, Edge[1], Edge[0]));
+            SetOfEdges[SetOfEdges.Count - 1].Index = SetOfEdges.Count - 1;
+        }
         public Edge FindEdge(params Node[] Nodes)
         {
             for (int Index = 0; Index < QuantityOfEdges; Index++)
@@ -208,6 +208,21 @@ namespace GraphAlgorithm
             Weight = 0.0;
 
             Index = 0;
+        }
+        public Edge(double Weight, params Node[] Nodes)
+        {
+            Ends = new List<Node>();
+
+            for (int Index = 0; Index < Nodes.Length; Index++)
+            {
+                Ends.Add(Nodes[Index]);
+            }
+
+            this.Weight = Weight;
+
+            Ends[0][Nodes[1].Index] = Nodes[1];
+
+            Name = $"{Nodes[0].Name}{Nodes[1].Name}";
         }
         public object Clone()
         {
