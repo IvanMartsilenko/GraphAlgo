@@ -12,7 +12,16 @@ namespace GraphAlgorithm
 {
     class FordFulkersonAlgorithm
     {
-
-
+        private static BreadthFirstSearchAlgorithm BreadthFirstSearch { get; set; }
+        private static Graph InnerGraph { get; set; }
+        private Node[] Path { get; set; }
+        public double CapacityOfFlow { get; private set; }
+        public FordFulkersonAlgorithm(Graph Graph)
+        {
+            InnerGraph = (Graph)Graph.Clone();
+            BreadthFirstSearch = new BreadthFirstSearchAlgorithm(InnerGraph);
+            Path = new Node[InnerGraph.QuantityOfNodes];
+            CapacityOfFlow = 0.0;
+        }
     }
 }
