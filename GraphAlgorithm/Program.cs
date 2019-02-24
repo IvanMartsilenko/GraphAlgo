@@ -13,7 +13,12 @@ namespace GraphAlgorithm
     class Program
     {
         private static Graph Graph = new Graph();
-        private static DataLoading Load = new DataLoading(); 
+        private static DataLoading Load = new DataLoading();
+
+        private static BreadthFirstSearchAlgorithm BFS = new BreadthFirstSearchAlgorithm(Graph);
+        private static DepthFirstSearchAlgorithm DFS = new DepthFirstSearchAlgorithm(Graph);
+        private static KruscalAlgorithm Kruscal = new KruscalAlgorithm(Graph);
+        private static PrimaAlgorithm Prima = new PrimaAlgorithm(Graph);
         static void Main(string[] args)
         {
             Load.LoadNodes(Graph);
