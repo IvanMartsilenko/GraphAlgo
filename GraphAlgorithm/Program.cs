@@ -12,10 +12,13 @@ namespace GraphAlgorithm
     class Program
     {
         private static Graph Graph = new Graph();
-
+        private static DataLoading Load = new DataLoading(); 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Load.LoadNodes(Graph);
+            Load.LoadOneWayEdges(Graph);
+            Load.LoadTwoWayEdges(Graph);
+            Console.WriteLine("Loading finished");
             Console.ReadKey();
         }
     }
