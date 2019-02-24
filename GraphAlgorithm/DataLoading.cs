@@ -31,5 +31,13 @@ namespace GraphAlgorithm
                 GraphEx.AddTwoWayEdge(new Edge(Convert.ToInt32(param[0]), GraphEx.SetOfNodes[Convert.ToInt32(param[1])], GraphEx.SetOfNodes[Convert.ToInt32(param[2])]));
             }
         }
+        public void LoadOneWayEdges(Graph GraphEx)
+        {
+            foreach (string line in File.ReadLines(@"C:\Users\Ivan\source\repos\GraphAlgorithm\GraphAlgorithm\bin\GraphData\onewayedges.txt"))
+            {
+                string[] param = line.Split(new char[] { ' ' }, 3, StringSplitOptions.RemoveEmptyEntries);
+                GraphEx.AddOneWayEdge(new Edge(Convert.ToInt32(param[0]), GraphEx.SetOfNodes[Convert.ToInt32(param[1])], GraphEx.SetOfNodes[Convert.ToInt32(param[2])]));
+            }
+        }
     }
 }
