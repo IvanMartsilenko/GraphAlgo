@@ -1,6 +1,6 @@
 ﻿// Created by Ivan Martsilenko K-24
 // Lab 1 Sem 2
-// 1st algo
+// algo module
 
 using System;
 using System.Collections.Generic;
