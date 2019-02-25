@@ -20,7 +20,7 @@ namespace GraphAlgorithm
             InnerGraph = (Graph)Graph.Clone();
             AuxiliaryGraph = (Graph)Graph.Clone();
         }
-        public bool FindAllTheShortestPathes()
+        public bool JonhsonFATSPAlgorithm()
         {
             AuxiliaryGraph.AddNode(new Node(AuxiliaryGraph.QuantityOfNodes, "Temporary"));
 

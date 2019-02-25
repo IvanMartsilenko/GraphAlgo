@@ -38,7 +38,38 @@ namespace GraphAlgorithm
             Console.WriteLine("Loading finished");
             // algo module
 
-            Console.ReadKey();
+            {
+                BFS.BreadthFirstSearch(Graph.SetOfNodes[0]);
+            }
+            {
+                DFS.DepthFirstSearch(Graph.SetOfNodes[0]);
+            }
+            {
+                Kruscal.KruskalSMSTAlgorithm();
+            }
+            {
+                Prima.PrimaSMSTAlgorithm();
+            }
+            {
+                BellmanFord.BellmanFordShortestPathSearchAlgorithm(Graph.SetOfNodes[0]);
+            }
+            {
+                Dijkstra.DijkstraSWSAlgorithm(Graph.SetOfNodes[0]);
+            }
+            {
+                Floyd_Warshall.Floyd_WarshalSATSPAlgorithm();
+            }
+            {
+                Johnson.JonhsonFATSPAlgorithm();
+            }
+            {
+                FordFulkerson.FordFulkersonBFSTypeAlgorithm(Graph.SetOfNodes[0], Graph.SetOfNodes[1]);
+            }
+            {
+                A_Star.A_StarAlgorithm(Graph.SetOfNodes[0], Graph.SetOfNodes[1]);
+            }
+
+                Console.ReadKey();
         }
     }
 
