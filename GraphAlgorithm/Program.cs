@@ -34,10 +34,8 @@ namespace GraphAlgorithm
                 Load.LoadOneWayEdges(Graph);
                 Load.LoadTwoWayEdges(Graph);
             }
-
             Console.WriteLine("Loading finished");
             // algo module
-
             {
                 BFS.BreadthFirstSearch(Graph.SetOfNodes[0]);
             }
