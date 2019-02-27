@@ -31,8 +31,7 @@ namespace GraphAlgorithm
             // data loading module 
             {
                 Load.LoadNodes(Graph);
-                Load.LoadOneWayEdges(Graph);
-                Load.LoadTwoWayEdges(Graph);
+                Load.LoadEdges(Graph);
             }
             Console.WriteLine("Loading finished");
             // algo module
