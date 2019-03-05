@@ -98,6 +98,12 @@ namespace GraphAlgorithm
         public double PastWayCost { get; set; }
         public double TotalPathCost { get; set; }
 
+        Circle = Box.CreateGraphics();
+
+        Circle.SmoothingMode = SmoothingMode.HighQuality;
+
+        Circle.DrawEllipse(new Pen(Color.Black, 2), CoordinateX, CoordinateY, 35, 35);
+
         public int Index { get; set; }
 
         protected void SetInfinityWeightsForNode(List<Node> Nodes)
@@ -176,6 +182,19 @@ namespace GraphAlgorithm
             this.Name = $"[{Name}]";
 
             Index = 0;
+        }
+
+        public void MarkNodeAsUnVisited()
+        {
+            Circle.DrawEllipse(new Pen(Color.Black, 2), CoordinateX, CoordinateY, 35, 35);
+        }
+        public void MarkNodeAsVisited()
+        {
+            Circle.DrawEllipse(new Pen(Color.MintCream, 3), CoordinateX, CoordinateY, 35, 35);
+        }
+        public void DrawNameOfNode()
+        {
+            Circle.DrawString(Name, new Font("Calibri Light", 12, FontStyle.Bold), new SolidBrush(Color.Blue), CoordinateX + 3, CoordinateY + 5);
         }
     }
 

@@ -12,19 +12,20 @@ namespace GraphAlgorithm
 {
     class Program
     {
-        private static Graph Graph = new Graph();
+        private Graph Graph { get; set; }
         private static DataLoading Load = new DataLoading();
 
-        private static BreadthFirstSearchAlgorithm BFS = new BreadthFirstSearchAlgorithm(Graph);
-        private static DepthFirstSearchAlgorithm DFS = new DepthFirstSearchAlgorithm(Graph);
-        private static KruscalAlgorithm Kruscal = new KruscalAlgorithm(Graph);
-        private static PrimaAlgorithm Prima = new PrimaAlgorithm(Graph);
-        private static BellmanFordAlgorithm BellmanFord = new BellmanFordAlgorithm(Graph);
-        private static DijkstraAlgorithm Dijkstra = new DijkstraAlgorithm(Graph);
-        private static Floyd_WarshallAlgorithm Floyd_Warshall = new Floyd_WarshallAlgorithm(Graph);
-        private static JohnsonAlgorithm Johnson = new JohnsonAlgorithm(Graph);
-        private static FordFulkersonAlgorithm FordFulkerson = new FordFulkersonAlgorithm(Graph);
-        private static A_Star A_Star = new A_Star(Graph);
+        private BreadthFirstSearchAlgorithm BFS { get; set; }
+        private DepthFirstSearchAlgorithm DFS { get; set; }
+        private KruscalAlgorithm Kruscal { get; set; }
+        private PrimaAlgorithm Prima { get; set; }
+        private BellmanFordAlgorithm BellmanFord { get; set; }
+        private DijkstraAlgorithm Dijkstra { get; set; }
+        private Floyd_WarshallAlgorithm Floyd_Warshall { get; set; }
+        private JohnsonAlgorithm Johnson { get; set; }
+        private FordFulkersonAlgorithm FordFulkerson { get; set; }
+        private A_Star A_Star { get; set; }
+
 
         static void Main(string[] args)
         {
@@ -34,37 +35,7 @@ namespace GraphAlgorithm
                 Load.LoadEdges(Graph);
             }
             Console.WriteLine("Loading finished");
-            // algo module
-            {
-                BFS.BreadthFirstSearch(Graph.SetOfNodes[0]);
-            }
-            {
-                DFS.DepthFirstSearch(Graph.SetOfNodes[0]);
-            }
-            {
-                Kruscal.KruskalSMSTAlgorithm();
-            }
-            {
-                Prima.PrimaSMSTAlgorithm();
-            }
-            {
-                BellmanFord.BellmanFordShortestPathSearchAlgorithm(Graph.SetOfNodes[0]);
-            }
-            {
-                Dijkstra.DijkstraSWSAlgorithm(Graph.SetOfNodes[0]);
-            }
-            {
-                Floyd_Warshall.Floyd_WarshalSATSPAlgorithm();
-            }
-            {
-                Johnson.JonhsonFATSPAlgorithm();
-            }
-            {
-                FordFulkerson.FordFulkersonBFSTypeAlgorithm(Graph.SetOfNodes[0], Graph.SetOfNodes[1]);
-            }
-            {
-                A_Star.A_StarAlgorithm(Graph.SetOfNodes[0], Graph.SetOfNodes[1]);
-            }
+
 
                 Console.ReadKey();
         }

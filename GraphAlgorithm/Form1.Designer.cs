@@ -48,6 +48,7 @@
             this.BFS.TabIndex = 0;
             this.BFS.Text = "BFS";
             this.BFS.UseVisualStyleBackColor = true;
+            this.BFS.Click += new System.EventHandler(this.BFS_Click);
             // 
             // DFS
             // 
@@ -57,6 +58,7 @@
             this.DFS.TabIndex = 1;
             this.DFS.Text = "DFS";
             this.DFS.UseVisualStyleBackColor = true;
+            this.DFS.Click += new System.EventHandler(this.DFS_Click);
             // 
             // Kruskal
             // 
