@@ -16,5 +16,65 @@ namespace GraphAlgorithm
         {
             InitializeComponent();
         }
+
+        private void BFS_Click(object sender, EventArgs e)
+        {
+            DrawResult(BFS.ResultOfSearching);
+        }
+
+        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BFS = new BreadthFirstSearchAlgorithm(Graph);
+        }
+
+        public Graphics Circle { get; set; }
+        public void DrawNameOfNode()
+        {
+            Circle.DrawString(Name, new Font("Calibri Light", 12, FontStyle.Bold), new SolidBrush(Color.Blue), CoordinateX + 3, CoordinateY + 5);
+        }
+        public void MarkNodeAsUnVisited()
+        {
+            Circle.DrawEllipse(new Pen(Color.Black, 2), CoordinateX, CoordinateY, 35, 35);
+        }
+        public void MarkNodeAsVisited()
+        {
+            Circle.DrawEllipse(new Pen(Color.MintCream, 3), CoordinateX, CoordinateY, 35, 35);
+        }
+
+        private void DrawResult(List<Edge> Edges)
+        {
+            Reset(true);
+
+            for (int Index = 0; Index < Edges.Count; Index++)
+            {
+                Edges[Index][0].MarkNodeAsVisited();
+
+                Edges[Index][0].FillCircle();
+
+                Edges[Index][0].DrawNameOfNode();
+
+                Thread.Sleep(500);
+
+                Edges[Index].MarkEdgeAsVisited();
+
+                Edges[Index].DrawNameOfEdge();
+
+                Edges[Index][0].FillCircle();
+
+                Edges[Index][0].DrawNameOfNode();
+
+                Edges[Index][1].FillCircle();
+
+                Edges[Index][1].DrawNameOfNode();
+
+                Thread.Sleep(500);
+
+                Edges[Index][1].MarkNodeAsVisited();
+
+                Thread.Sleep(500);
+            }
+        }
+
+
     }
 }

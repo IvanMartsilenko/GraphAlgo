@@ -48,6 +48,7 @@
             this.BFS.TabIndex = 0;
             this.BFS.Text = "BFS";
             this.BFS.UseVisualStyleBackColor = true;
+            this.BFS.Click += new System.EventHandler(this.BFS_Click);
             // 
             // DFS
             // 
