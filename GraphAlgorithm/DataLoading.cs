@@ -14,29 +14,42 @@ namespace GraphAlgorithm
 {
     class DataLoading : Program
     {
-        public void LoadNodes(Graph GraphEx)
+        private void LoadNodes(Graph Graph, Graph GraphEx)
         {
             foreach (string line in File.ReadLines(@"C:\Users\Ivan\source\repos\GraphAlgorithm\GraphAlgorithm\bin\GraphData\nodes.txt"))
             {
-                string[] param = line.Split(new char[] { ' ' }, 4, StringSplitOptions.RemoveEmptyEntries);
-                GraphEx.AddNode(new Node(Convert.ToInt32(param[0]), param[1], new Coordinate(Convert.ToInt32(param[2]), Convert.ToInt32(param[3]))));
+                string[] param = line.Split(new char[] { ' ' }, 5, StringSplitOptions.RemoveEmptyEntries);
+                if (param[4] == "1")
+                {
+                    GraphEx.AddNode(new Node(Convert.ToInt32(param[0]), param[1], new Coordinate(Convert.ToInt32(param[2]), Convert.ToInt32(param[3]))));
+                }
+                else
+                {
+                    Graph.AddNode(new Node(Convert.ToInt32(param[0]), param[1], new Coordinate(Convert.ToInt32(param[2]), Convert.ToInt32(param[3]))));
+                }
             }
         }
 
-        public void LoadEdges(Graph GraphEx)
+        private void LoadEdges(Graph Graph, Graph GraphEx)
         {
             foreach (string line in File.ReadLines(@"C:\Users\Ivan\source\repos\GraphAlgorithm\GraphAlgorithm\bin\GraphData\edges.txt"))
             {
                 string[] param = line.Split(new char[] { ' ' }, 4, StringSplitOptions.RemoveEmptyEntries);
-                if ( Convert.ToBoolean(param[3]))
+                if (Convert.ToBoolean(param[3]))
                 {
                     GraphEx.AddOneWayEdge(new Edge(Convert.ToInt32(param[0]), GraphEx.SetOfNodes[Convert.ToInt32(param[1])], GraphEx.SetOfNodes[Convert.ToInt32(param[2])]));
                 }
-                else 
+                else
                 {
-                    GraphEx.AddTwoWayEdge(new Edge(Convert.ToInt32(param[0]), GraphEx.SetOfNodes[Convert.ToInt32(param[1])], GraphEx.SetOfNodes[Convert.ToInt32(param[2])]));
+                    Graph.AddTwoWayEdge(new Edge(Convert.ToInt32(param[0]), GraphEx.SetOfNodes[Convert.ToInt32(param[1])], GraphEx.SetOfNodes[Convert.ToInt32(param[2])]));
                 }
             }
+        }
+
+        public void LoadGraph (Graph Graph, Graph GraphEx)
+        {
+            LoadNodes(Graph, GraphEx);
+            LoadEdges(Graph, GraphEx);
         }
     }
 }

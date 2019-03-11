@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,11 +35,38 @@ namespace GraphAlgorithm
         }
         public void MarkNodeAsUnVisited()
         {
-            Circle.DrawEllipse(new Pen(Color.Black, 2), CoordinateX, CoordinateY, 35, 35);
+            Circle.DrawEllipse(new Pen(Color.Black, 2), X, Y, 35, 35);
         }
         public void MarkNodeAsVisited()
         {
-            Circle.DrawEllipse(new Pen(Color.MintCream, 3), CoordinateX, CoordinateY, 35, 35);
+            Circle.DrawEllipse(new Pen(Color.MintCream, 3), X, Y, 35, 35);
+        }
+
+        private void Reset(bool DrawNameOfEdge)
+        {
+            Visualizer.Refresh();
+
+            for (int Index = 0; Index < Graph.NumberOfNodes; Index++)
+            {
+                Graph.SetOfNodes[Index].MarkNodeAsUnVisited();
+            }
+
+            for (int Index = 0; Index < Graph.NumberOfEdges; Index++)
+            {
+                Graph.SetOfEdges[Index].MarkEdgeAsUnVisited();
+
+                if (DrawNameOfEdge.Equals(true))
+                {
+                    Graph.SetOfEdges[Index].DrawNameOfEdge();
+                }
+            }
+
+            for (int Index = 0; Index < Graph.NumberOfNodes; Index++)
+            {
+                Graph.SetOfNodes[Index].FillCircle();
+
+                Graph.SetOfNodes[Index].DrawNameOfNode();
+            }
         }
 
         private void DrawResult(List<Edge> Edges)
